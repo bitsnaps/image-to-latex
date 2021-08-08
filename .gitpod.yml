@@ -1,0 +1,15 @@
+image:
+  file: .gitpod.Dockerfile
+
+ports:
+  - port: 8080
+    onOpen: open-preview
+
+tasks:
+  - before: >
+      make venv
+    init: >
+      make install-dev
+      python scripts/prepare_data.py
+    command: >
+      python scripts/run_experiment.py trainer.gpus=1 data.batch_size=32
