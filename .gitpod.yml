@@ -2,13 +2,12 @@ image:
   file: .gitpod.Dockerfile
 
 ports:
-  - port: 8080
+  - port: 8000
     onOpen: open-preview
 
 tasks:
-  - before: >
+  - init: >
       make venv
-    init: >
       make install-dev
       python scripts/prepare_data.py
     command: >
